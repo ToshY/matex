@@ -1,5 +1,8 @@
-[![License](https://img.shields.io/github/license/Madorin/Matex)](LICENSE.md)
+[![License](https://img.shields.io/github/license/ToshY/matex)](LICENSE.md)
 
+> [!IMPORTANT]
+> This is a fork of [madorin/matex](https://github.com/madorin/matex) to work with PHP 8.4
+> without deprecation notices. Take into consideration that the package has changed to `toshy/matex` and has a new namespace `ToshY\Matex`.
 
 # Matex
 
@@ -23,10 +26,10 @@ PHP Mathematical expression parser and evaluator
 Using [Composer](https://getcomposer.org) run
 
 ```bash
-$ composer require madorin/matex
+$ composer require toshy/matex
 ```
 
-See [manual](doc/MANUAL.md) for more details and options.
+See [manual](./docs/MANUAL.md) for more details and options.
 
 
 ## Usage

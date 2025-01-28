@@ -60,7 +60,7 @@ public function doFunction($name, &$value) {
 			break;
 		case 'mix':
 			// Map to a public object instance function
-			$value = ['ref' => [$this, 'mix'], 'arc' => 2];
+			$value = ['ref' => $this->mix(...), 'arc' => 2];
 			break;
 	}
 }
@@ -73,13 +73,13 @@ public function calculate() {
 		'dy' => 3.4
 	];
 	// Connect variable resolver
-	$evaluator->onVariable = [$this, 'doVariable'];
+	$evaluator->onVariable = $this->doVariable(...);
 	// Some predefined functions
 	$evaluator->functions = Math::functions + [
 		'field' => ['ref' => 'Some::field', 'arc' => 1]
 	];
 	// Connect function resolver
-	$evaluator->onFunction = [$this, 'doFunction'];
+	$evaluator->onFunction = $this->doFunction(...);
 	// Let's do some calculations
 	$formula = 'round(field("height") * field("width") / (dx + dy), 2) - min(zen / mix(dx, sin(1.7)), 3, fox)';
 	return $evaluator->execute($formula);
