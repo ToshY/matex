@@ -36,19 +36,19 @@ See [manual](./docs/MANUAL.md) for more details and options.
 
 Basic:
 ```php
-$evaluator = new \Matex\Evaluator();
+$evaluator = new ToshY\Matex\Evaluator();
 echo $evaluator->execute('1 + 2');
 ```
 
 String concatenation:
 ```php
-$evaluator = new \Matex\Evaluator();
+$evaluator = new ToshY\Matex\Evaluator();
 echo $evaluator->execute('"String" + " " + "concatenation"');
 ```
 
 Variables:
 ```php
-$evaluator = new \Matex\Evaluator();
+$evaluator = new ToshY\Matex\Evaluator();
 $evaluator->variables = [
 	'a' => 1,
 	'b' => 2
@@ -66,7 +66,7 @@ public function doVariable($name, &$value) {
 	}
 }
 
-$evaluator = new \Matex\Evaluator();
+$evaluator = new ToshY\Matex\Evaluator();
 $evaluator->variables = [
 	'a' => 1
 	];
@@ -83,7 +83,7 @@ static function sum($arguments) {
 	return $result;
 }
 
-$evaluator = new \Matex\Evaluator();
+$evaluator = new ToshY\Matex\Evaluator();
 $evaluator->functions = [
 	'sum' => ['ref' => '\\Space\\Class::sum', 'arc' => null]
 ];
@@ -149,7 +149,7 @@ function minAdd($a, $b) {
 }
 
 // Let's do some calculations
-$evaluator = new \Matex\Evaluator();
+$evaluator = new ToshY\Matex\Evaluator();
 $evaluator->variables = [
 	'a' => 1,
 	'bet' => -10.59,

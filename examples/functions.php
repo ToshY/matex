@@ -10,7 +10,7 @@ require dirname(__DIR__).'\vendor\autoload.php';
 // Connect math module
 require __DIR__.'\math.php';
 
-use \Matex\Evaluator;
+use ToshY\Matex\Evaluator;
 
 $evaluator = new Evaluator();
 $evaluator->functions = Math::functions;

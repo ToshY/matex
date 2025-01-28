@@ -8,7 +8,7 @@
 require dirname(__DIR__).'\vendor\autoload.php';
 require __DIR__.'\math.php';
 
-use \Matex\Evaluator;
+use ToshY\Matex\Evaluator;
 
 class Some {
 

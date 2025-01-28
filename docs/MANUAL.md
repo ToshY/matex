@@ -35,11 +35,11 @@ For complete manual linking way, include the `src/Evaluator.php` in your project
 
 ### Testing
 
-Once everything is properly configured, the `\Matex\` namespace classes should be available for usage.
+Once everything is properly configured, the `ToshY\Matex\` namespace classes should be available for usage.
 The following code should run without any errors and will output `3` as result:
 
 ```php
-$evaluator = new \Matex\Evaluator();
+$evaluator = new ToshY\Matex\Evaluator();
 echo $evaluator->execute('1 + 2');
 ```
 
