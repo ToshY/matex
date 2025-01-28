@@ -25,16 +25,16 @@ class Evaluator
         $ist = ($this->text[$this->pos] ?? false) == '"';
         if ($ist) {
             $this->pos++;
-            if (($ist = strpos($this->text, '"', $this->pos)) === false) {
+            if (($ist = strpos((string) $this->text, '"', $this->pos)) === false) {
                 return false;
             }
             $kind = 4;
-            $value = substr($this->text, $this->pos, $ist - $this->pos);
+            $value = substr((string) $this->text, $this->pos, $ist - $this->pos);
             $this->pos = $ist + 1;
 
             return true;
         }
-        while ((($char = $this->text[$this->pos] ?? false) !== false) && (ctype_alnum($char) || in_array(
+        while ((($char = $this->text[$this->pos] ?? false) !== false) && (ctype_alnum((string) $char) || in_array(
             $char,
             ['.', '_'],
             true,
@@ -44,11 +44,11 @@ class Evaluator
         if (!$len = $this->pos - $ops) {
             return false;
         }
-        $str = substr($this->text, $ops, $len);
+        $str = substr((string) $this->text, $ops, $len);
         if (is_numeric($str)) {
             $kind = 1;
         } else {
-            if (ctype_digit($str[0]) || (strpos($str, '.') !== false)) {
+            if (ctype_digit($str[0]) || (str_contains($str, '.'))) {
                 return false;
             }
             $kind = $char == '(' ? 3 : 2;
@@ -87,7 +87,7 @@ class Evaluator
         $mark = $this->pos;
         while ((($char = $this->text[$this->pos] ?? false) !== false) && ($b > 0)) {
             if (($char == ',') && ($b == 1)) {
-                $this->addArgument($arguments, substr($this->text, $mark, $this->pos - $mark));
+                $this->addArgument($arguments, substr((string) $this->text, $mark, $this->pos - $mark));
                 $mark = $this->pos + 1;
             } elseif ($char == ')') {
                 $b--;
@@ -99,7 +99,7 @@ class Evaluator
         if (!in_array($char, [false, '+', '-', '/', '*', '^', '%', ')'], true)) {
             return false;
         }
-        $this->addArgument($arguments, substr($this->text, $mark, $this->pos - $mark - 1));
+        $this->addArgument($arguments, substr((string) $this->text, $mark, $this->pos - $mark - 1));
 
         return true;
     }
@@ -140,7 +140,7 @@ class Evaluator
 
     private function isNumber($value): bool
     {
-        return is_float($value) || is_integer($value);
+        return is_float($value) || is_int($value);
     }
 
     private function checkNumbers($a, $b): void
