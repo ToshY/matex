@@ -15,7 +15,7 @@ Make sure the [Composer](https://getcomposer.org) is installed and your project 
 Execute in console the following code in order to connect Matex library:
 
 ```bash
-$ composer require madorin/matex
+$ composer require toshy/matex
 ```
 
 It will adjust the composer.json file of your project by adding Matex library as an requrement.

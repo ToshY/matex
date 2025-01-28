@@ -1,4 +1,4 @@
-[![License](https://img.shields.io/github/license/Madorin/Matex)](LICENSE.md)
+[![License](https://img.shields.io/github/license/ToshY/matex)](LICENSE.md)
 
 
 # Matex
@@ -23,7 +23,7 @@ PHP Mathematical expression parser and evaluator
 Using [Composer](https://getcomposer.org) run
 
 ```bash
-$ composer require madorin/matex
+$ composer require toshy/matex
 ```
 
 See [manual](doc/MANUAL.md) for more details and options.

@@ -1,0 +1,82 @@
+version: '3'
+
+env:
+  UID:
+    sh: id -u
+  GID:
+    sh: id -g
+  TTY: ''
+
+tasks:
+  default:
+    cmds:
+      - task --list
+
+  contribute:
+    desc: Contribute by running dev tools
+    cmds:
+      - task: phpcs
+
+  # Composer
+  composer:install:
+    desc: Composer install
+    cmds:
+      - docker compose run --rm $TTY php composer install {{.CLI_ARGS | default "--no-cache --no-interaction --prefer-dist"}}
+
+  composer:autoload:
+    desc: Composer dump autoload
+    cmds:
+      - docker compose run --rm $TTY php composer dump-autoload {{.CLI_ARGS | default "--no-cache --no-interaction"}}
+
+  composer:autoload:dev:
+    desc: Composer dump autoload dev
+    cmds:
+      - task composer:autoload -- --dev --no-cache --no-interaction
+
+  composer:require:
+    desc: Composer require package
+    summary: |
+      task composer:require p="my/package"
+    vars:
+      PACKAGE: '{{.p}}'
+    cmds:
+      - docker compose run --rm $TTY php composer require {{.PACKAGE}} {{.CLI_ARGS | default "--no-cache"}}
+
+  composer:remove:
+    desc: Composer remove package
+    summary: |
+      task composer:remove p="my/package"
+    vars:
+      PACKAGE: '{{.p}}'
+    cmds:
+      - docker compose run --rm $TTY php composer remove {{.PACKAGE}} {{.CLI_ARGS | default "--no-cache"}}
+
+  composer:update:
+    desc: Composer update package
+    summary: |
+      task composer:update p="my/package"
+    vars:
+      PACKAGE: '{{.p}}'
+    cmds:
+      - docker compose run --rm $TTY php composer update {{.PACKAGE}} {{.CLI_ARGS | default "--no-cache"}}
+
+  # Tools
+  phpcs:
+    desc: PHPCS dry run
+    cmds:
+      - docker compose run --rm $TTY php vendor/bin/php-cs-fixer fix --dry-run -v --diff
+
+  phpcs:fix:
+    desc: PHPCS fix
+    cmds:
+      - docker compose run --rm $TTY php vendor/bin/php-cs-fixer fix -v
+
+  rector:
+    desc: Rector dry run
+    cmds:
+      - docker compose run --rm $TTY php vendor/bin/rector --dry-run
+
+  rector:fix:
+    desc: Rector fix
+    cmds:
+      - docker compose run --rm $TTY php vendor/bin/rector
