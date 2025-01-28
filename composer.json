@@ -5,6 +5,18 @@
 	"keywords": ["evaluator", "parser", "calculator", "expression", "formula", "math", "eval"],
 	"readme": "README.md",
 	"license": "MIT",
+	"authors": [
+		{
+			"name": "Dorin Marcoci",
+			"email": "dorin.marcoci@gmail.com",
+			"homepage": "https://www.marcodor.com",
+			"role": "Developer"
+		},
+		{
+			"name": "ToshY",
+			"homepage": "https://github.com/ToshY"
+		}
+	],
 	"require": {
 		"php": "^8.1"
 	},
